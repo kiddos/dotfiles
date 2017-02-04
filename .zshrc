@@ -79,12 +79,24 @@ else
 fi
 
 # Compilation flags
-export ARCHFLAGS="-arch x86_64"
+# export ARCHFLAGS="-arch x86_64"
 # Path
+# ruby
+export PATH="$PATH:$HOME/.rvm/bin"
+# cuda
+export CUDA_HOME="/usr/local/cuda-7.5"
+export PATH="$PATH:$CUDA_HOME/bin"
+export PATH="$PATH:/usr/lib/nvidia-352/bin"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64:/usr/lib:/usr/local/lib"
+# java
 export JAVA_HOME="/usr/local/share/jdk1.8.0_66"
-export PATH="$PATH:$HOME/.rvm/bin:/usr/local/cuda-7.5/bin"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
-export CUDA_HOME="/usr/local/cuda"
+export CLASSPATH="$CLASSPATH:`pwd`:`pwd`/src/main/java"
+export HADOOP_HOME="/opt/hadoop-2.6.4"
+export PATH="$PATH:$HADOOP_HOME/bin"
+# go
+export GOPATH=$HOME/.go
+# swift
+export PATH="$PATH:/opt/swift/swift-3.0/usr/bin"
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/dsa_id"
