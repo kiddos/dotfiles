@@ -1,45 +1,33 @@
-# Path to your oh-my-zsh installation.
+# oh my zsh settings {
 export ZSH=/home/joseph/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-# ZSH_THEME="crunch"
-# ZSH_THEME="amuse"
-# ZSH_THEME='avit'
-ZSH_THEME="clean"
-# ZSH_THEME="muse"
-
-[[ $TMUX = "" ]] && export TERM="xterm-256color"
-
-# grunt tab completion
-eval "$(grunt --completion=zsh)"
+# Path to your oh-my-zsh installation
+ZSH_THEME="gianu"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=14
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -58,55 +46,85 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-
-# User configuration
-export MANPATH="/usr/local/man:$MANPATH"
-bindkey -v
-export KEYTIMEOUT=1
-
+plugins=(git git-extras gitfast docker node go cp adb)
+# }
 source $ZSH/oh-my-zsh.sh
-source ~/.rvm/scripts/rvm
-
-# language settings
+# custom path settings {
+# local path
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+# manual path
+export MANPATH="/usr/local/man:$MANPATH"
+# language
 export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
+# editor
+export EDITOR='nvim'
+# CUDA
+export CUDA_HOME=/usr/local/cuda-8.0
+export PATH="$PATH:$CUDA_HOME/bin"
+export PATH="$PATH:/usr/lib/nvidia-375/bin"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/lib64:$CUDA_HOME/extras/CUPTI/lib64"
+# ruby
+export PATH="$PATH:$HOME/.rvm/bin:$HOME/.rvm/scripts"
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# lldb path
+export PYTHONPATH="$PYTHONPATH:/usr/lib/python2.7/dist-packages/lldb-3.8"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-# Path
-# ruby
-export PATH="$PATH:$HOME/.rvm/bin"
-# cuda
-export CUDA_HOME="/usr/local/cuda-7.5"
-export PATH="$PATH:$CUDA_HOME/bin"
-export PATH="$PATH:/usr/lib/nvidia-352/bin"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64:/usr/lib:/usr/local/lib"
-# java
-export JAVA_HOME="/usr/local/share/jdk1.8.0_66"
-export CLASSPATH="$CLASSPATH:`pwd`:`pwd`/src/main/java"
-export HADOOP_HOME="/opt/hadoop-2.6.4"
-export PATH="$PATH:$HADOOP_HOME/bin"
-# go
-export GOPATH=$HOME/.go
-# swift
-export PATH="$PATH:/opt/swift/swift-3.0/usr/bin"
 
 # ssh
-export SSH_KEY_PATH="~/.ssh/dsa_id"
+export SSH_KEY_PATH="~/.ssh/rsa_id"
+# }
+# ROS settings {
+function ros_reset {
+  export ROS_DISTRO=""
+  export ROS_ETC_DIR=""
+  export ROS_MASTER_URI=""
+  export ROSLISP_PACKAGE_DIRECTORIES=""
+  export ROS_PACKAGE_PATH=""
+  export ROS_ROOT=""
+}
 
-# alias
-alias zshconfig="mate ~/.zshrc"
-alias ohmyzsh="mate ~/.oh-my-zsh"
-alias disable_touchpad='xinput set-prop 13 "Device Enabled" 0'
-alias enable_touchpad='xinput set-prop 13 "Device Enabled" 1'
-alias disable_mouse_while_typing='syndaemon -i 1 -d';
-alias tmux="tmux -2"
-alias :q="exit"
-alias :Q="exit"
+ros_reset
+# default to indigo
+if [ ! $ROS_DISTRO ]; then
+  source /opt/ros/indigo/setup.zsh
+fi
+
+function ros_swap {
+  if [ $ROS_DISTRO = "indigo" ]; then
+    ros_reset
+    source /opt/ros/kinetic/setup.zsh
+  elif [ $ROS_DISTRO = "kinetic" ]; then
+    ros_reset
+    source /opt/ros/indigo/setup.zsh
+  fi
+}
+
+# setup catkin workspace
+function catkin_setup {
+  source ~/catkin/devel/setup.zsh
+}
+# }
+# macro {
+alias :q=exit
+alias :Q=exit
+# }
+# emsdk {
+function emsdk_init {
+  source $HOME/tools/emsdk/emsdk_env.sh
+}
+# }
+# bazel {
+fpath[1,0]=~/.zsh/completion/
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+# }
+# fun {
+alias sl="ls"
+alias train="/usr/games/sl"
+alias luck="/usr/games/fortune | /usr/games/cowsay"
+# }
