@@ -46,7 +46,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras gitfast docker node go cp adb)
+plugins=(git git-extras gitfast docker node go adb heroku virtualenv postgres npm pip tmux rvm ubuntu django)
 # }
 source $ZSH/oh-my-zsh.sh
 # custom path settings {
@@ -88,10 +88,16 @@ function ros_reset {
   export ROS_ROOT=""
 }
 
+# setup catkin workspace
+function catkin_setup {
+  source ~/catkin_$ROS_DISTRO/devel/setup.zsh
+}
+
 ros_reset
 # default to indigo
 if [ ! $ROS_DISTRO ]; then
   source /opt/ros/indigo/setup.zsh
+  catkin_setup
 fi
 
 function ros_swap {
@@ -102,11 +108,6 @@ function ros_swap {
     ros_reset
     source /opt/ros/indigo/setup.zsh
   fi
-}
-
-# setup catkin workspace
-function catkin_setup {
-  source ~/catkin/devel/setup.zsh
 }
 # }
 # macro {
@@ -128,3 +129,5 @@ alias sl="ls"
 alias train="/usr/games/sl"
 alias luck="/usr/games/fortune | /usr/games/cowsay"
 # }
+
+. /home/joseph/tools/torch/install/bin/torch-activate
