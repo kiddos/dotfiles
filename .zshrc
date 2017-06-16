@@ -46,7 +46,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras gitfast docker node go adb heroku virtualenv postgres npm pip tmux rvm ubuntu django)
+plugins=(git docker node go heroku virtualenv npm pip tmux rvm)
 # }
 source $ZSH/oh-my-zsh.sh
 # custom path settings {
@@ -87,47 +87,73 @@ function ros_reset {
   export ROS_PACKAGE_PATH=""
   export ROS_ROOT=""
 }
-
 # setup catkin workspace
 function catkin_setup {
-  source ~/catkin_$ROS_DISTRO/devel/setup.zsh
+  if [[ -f "$HOME/catkin_$ROS_DISTRO/devel/setup.zsh" ]]; then
+    source ~/catkin_$ROS_DISTRO/devel/setup.zsh
+  fi
+}
+function indigo {
+  if [[ -f "/opt/ros/indigo/setup.zsh" ]]; then
+    ros_reset
+    source /opt/ros/indigo/setup.zsh
+  fi
+}
+function kinetic {
+  if [[ -f "/opt/ros/kinetic/setup.zsh" ]]; then
+    ros_reset
+    source /opt/ros/kinetic/setup.zsh
+  fi
 }
 
 ros_reset
 # default to indigo
 if [ ! $ROS_DISTRO ]; then
-  source /opt/ros/indigo/setup.zsh
-  catkin_setup
-fi
-
-function ros_swap {
-  if [ $ROS_DISTRO = "indigo" ]; then
-    ros_reset
-    source /opt/ros/kinetic/setup.zsh
-  elif [ $ROS_DISTRO = "kinetic" ]; then
-    ros_reset
+  if [[ -f "/opt/ros/indigo/setup.zsh" ]]; then
     source /opt/ros/indigo/setup.zsh
   fi
-}
+  catkin_setup
+
+  # setup MASTER URI and HOST
+  if [[ -f "$HOME/.ros.zsh" ]]; then
+    source "$HOME/.ros.zsh"
+  fi
+fi
 # }
 # macro {
 alias :q=exit
 alias :Q=exit
 # }
 # emsdk {
-function emsdk_init {
-  source $HOME/tools/emsdk/emsdk_env.sh
+function emsdk {
+  if [[ -f "$HOME/tools/emsdk/emsdk_env.sh" ]]; then
+    source $HOME/tools/emsdk/emsdk_env.sh
+  fi
 }
 # }
 # bazel {
-fpath[1,0]=~/.zsh/completion/
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
+if [[ -f "$HOME/.zsh/completion" ]]; then
+  fpath[1,0]=~/.zsh/completion/
+  zstyle ":completion:*" use-cache on
+  zstyle ":completion:*" cache-path ~/.zsh/cache
+fi
 # }
 # fun {
 alias sl="ls"
 alias train="/usr/games/sl"
 alias luck="/usr/games/fortune | /usr/games/cowsay"
 # }
-
-. /home/joseph/tools/torch/install/bin/torch-activate
+# torch {
+if [[ -f "$HOME/tools/torch/install/bin/torch-activate" ]]; then
+  . /home/joseph/tools/torch/install/bin/torch-activate
+fi
+# }
+# hadoop {
+export PATH="$PATH:/opt/hadoop-2.8.0/bin:/opt/hadoop-2.8.0/lib/native/"
+#
+# }
+# sdkman {
+# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "/home/joseph/.sdkman/bin/sdkman-init.sh"
+# }

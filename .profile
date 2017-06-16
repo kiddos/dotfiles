@@ -28,3 +28,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 
 . /home/joseph/tools/torch/install/bin/torch-activate
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/joseph/.sdkman"
+[[ -s "/home/joseph/.sdkman/bin/sdkman-init.sh" ]] && source "/home/joseph/.sdkman/bin/sdkman-init.sh"
