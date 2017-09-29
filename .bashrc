@@ -1,11 +1,12 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.h
+# ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
-      *) return;; esac
+      *) return;;
+esac
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -15,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=2048
-HISTFILESIZE=4096
+HISTSIZE=1000
+HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -36,7 +37,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -56,23 +57,16 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-    #PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[01;32m\]⌘ \[\033[01;32m\]\h\[\033[01;31m\]> \[\033[01;34m\]\w\[\033[00m\] Σ '
-    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u @\[\033[01;34m\]\w\[\033[00m\] Σ '
-    #PS1='\[\033[01;34m\]\u\[\033[01;31m\]@(\[\033[01;33m\]\w\[\033[01;31m\])\[\033[01;34m\]⎇  \[\033[01;31m\](\[\033[01;32m\]`git rev-parse --abbrev-ref HEAD`\[\033[01;31m\]) \[\033[01;33m\]Δ \[\033[00m\]'
-    #PS1='\[\033[01;34m\]\u\[\033[01;31m\]@(\[\033[01;33m\]\w\[\033[01;31m\])\[\033[01;32m\]⎇  \[\033[01;31m\](\[\033[01;33m\]`git rev-parse --abbrev-ref HEAD`\[\033[01;31m\]) \[\033[00m\]Δ'
-    #PS1='\[\033[01;34m\]\u\[\033[01;31m\]@(\[\033[01;33m\]\w\[\033[01;31m\])\[\033[01;32m\]⎇  \[\033[01;31m\](\[\033[01;33m\]`git rev-parse --abbrev-ref HEAD`\[\033[01;31m\]) \[\033[00m\]$'
-    PS1='\[\033[01;34m\]\u\[\033[01;33m\]@\[\033[01;31m\](\[\033[01;32m\]\w\[\033[01;31m\])\[\033[00m\]≡ Σ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-	#PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u: \w\a\]$PS1"
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
 *)
     ;;
@@ -89,6 +83,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -119,20 +116,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
 
-export JAVA_HOME=/usr/local/share/jdk1.8.0_66/
-#export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda-7.5/lib64"
-#export CUDA_HOME=/usr/local/cuda-7.5
-alias disable_touchpad='xinput set-prop 13 "Device Enabled" 0'
-alias enable_touchpad='xinput set-prop 13 "Device Enabled" 1'
-alias disable_mouse_while_typing='syndaemon -i 1 -d';
-#alias disable_touchpad='xinput set-prop 14 "Device Enabled" 0'
-#alias enable_touchpad='xinput set-prop 14 "Device Enabled" 1'
-
-alias tmux='tmux -2'
-
-alias ctagscpp='ctags -R --sort=1 --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++'
-alias vim='nvim'
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-source ~/.rvm/scripts/rvm
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/joseph/.sdkman"
+[[ -s "/home/joseph/.sdkman/bin/sdkman-init.sh" ]] && source "/home/joseph/.sdkman/bin/sdkman-init.sh"

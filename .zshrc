@@ -1,5 +1,5 @@
 # oh my zsh settings {
-export ZSH=/home/joseph/.oh-my-zsh
+export ZSH=/home/$USER/.oh-my-zsh
 
 # Path to your oh-my-zsh installation
 ZSH_THEME="gianu"
@@ -63,7 +63,9 @@ export EDITOR='nvim'
 export CUDA_HOME=/usr/local/cuda-8.0
 export PATH="$PATH:$CUDA_HOME/bin"
 export PATH="$PATH:/usr/lib/nvidia-375/bin"
+export PATH="$PATH:/usr/lib/nvidia-375"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/lib64:$CUDA_HOME/extras/CUPTI/lib64"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/nvidia-375"
 # ruby
 export PATH="$PATH:$HOME/.rvm/bin:$HOME/.rvm/scripts"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
@@ -143,11 +145,6 @@ alias sl="ls"
 alias train="/usr/games/sl"
 alias luck="/usr/games/fortune | /usr/games/cowsay"
 # }
-# torch {
-if [[ -f "$HOME/tools/torch/install/bin/torch-activate" ]]; then
-  . /home/joseph/tools/torch/install/bin/torch-activate
-fi
-# }
 # hadoop {
 export PATH="$PATH:/opt/hadoop-2.8.0/bin:/opt/hadoop-2.8.0/lib/native/"
 #
@@ -155,5 +152,5 @@ export PATH="$PATH:/opt/hadoop-2.8.0/bin:/opt/hadoop-2.8.0/lib/native/"
 # sdkman {
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "/home/joseph/.sdkman/bin/sdkman-init.sh"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "/home/$USER/.sdkman/bin/sdkman-init.sh"
 # }
