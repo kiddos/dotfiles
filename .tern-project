@@ -6,26 +6,16 @@
   ],
   "loadEagerly": [],
   "plugins": {
-    "requirejs": {
-      "baseURL": "./",
-      "paths": {}
-    },
-    "angular.js": {
-      "baseURL": "./",
-      "paths": {}
-    },
-    "modules.js": {
-      "baseURL": "./",
-      "paths": {}
-    },
-    "node.js": {
-      "baseURL": "./",
-      "paths": {}
-    },
-    "node_resolve.js": {
-      "baseURL": "./",
-      "paths": {}
-    }
+    "angular": {},
+    "commonjs": {},
+    "modules": {},
+    "node": {},
+    "node-express": {},
+    "node_resolve": {},
+    "requirejs": {},
+    "commonjs": {},
+    "modules": {},
+    "webpack": {}
   }
 }
 
