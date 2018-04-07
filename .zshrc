@@ -86,6 +86,9 @@ fi
 if [[ -f "$HOME/catkin_$ROS_DISTRO/devel/setup.zsh" ]]; then
   source ~/catkin_$ROS_DISTRO/devel/setup.zsh
 fi
+if [[ -f "$HOME/.ros.zsh" ]]; then
+  source ~/.ros.zsh
+fi
 # }
 # macro {
 alias :q=exit
