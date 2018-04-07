@@ -1,5 +1,5 @@
 # oh my zsh settings {
-export ZSH=/home/$USER/.oh-my-zsh
+export ZSH=/home/joseph/.oh-my-zsh
 
 # Path to your oh-my-zsh installation
 ZSH_THEME="gianu"
@@ -62,8 +62,6 @@ export EDITOR='nvim'
 # CUDA
 export CUDA_HOME=/usr/local/cuda-8.0
 export PATH="$PATH:$CUDA_HOME/bin"
-export PATH="$PATH:/usr/lib/nvidia-375/bin"
-export PATH="$PATH:/usr/lib/nvidia-375"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/lib64:$CUDA_HOME/extras/CUPTI/lib64"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/nvidia-375"
 # ruby
@@ -81,57 +79,18 @@ export PYTHONPATH="$PYTHONPATH:/usr/lib/python2.7/dist-packages/lldb-3.8"
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 # }
 # ROS settings {
-function ros_reset {
-  export ROS_DISTRO=""
-  export ROS_ETC_DIR=""
-  export ROS_MASTER_URI=""
-  export ROSLISP_PACKAGE_DIRECTORIES=""
-  export ROS_PACKAGE_PATH=""
-  export ROS_ROOT=""
-}
 # setup catkin workspace
-function catkin_setup {
-  if [[ -f "$HOME/catkin_$ROS_DISTRO/devel/setup.zsh" ]]; then
-    source ~/catkin_$ROS_DISTRO/devel/setup.zsh
-  fi
-}
-function indigo {
-  if [[ -f "/opt/ros/indigo/setup.zsh" ]]; then
-    ros_reset
-    source /opt/ros/indigo/setup.zsh
-  fi
-}
-function kinetic {
-  if [[ -f "/opt/ros/kinetic/setup.zsh" ]]; then
-    ros_reset
-    source /opt/ros/kinetic/setup.zsh
-  fi
-}
-
-ros_reset
-# default to indigo
-if [ ! $ROS_DISTRO ]; then
-  if [[ -f "/opt/ros/indigo/setup.zsh" ]]; then
-    source /opt/ros/indigo/setup.zsh
-  fi
-  catkin_setup
-
-  # setup MASTER URI and HOST
-  if [[ -f "$HOME/.ros.zsh" ]]; then
-    source "$HOME/.ros.zsh"
-  fi
+if [[ -f "/opt/ros/kinetic/setup.zsh" ]]; then
+  source /opt/ros/kinetic/setup.zsh
+fi
+if [[ -f "$HOME/catkin_$ROS_DISTRO/devel/setup.zsh" ]]; then
+  source ~/catkin_$ROS_DISTRO/devel/setup.zsh
 fi
 # }
 # macro {
 alias :q=exit
 alias :Q=exit
 # }
-# emsdk {
-function emsdk {
-  if [[ -f "$HOME/tools/emsdk/emsdk_env.sh" ]]; then
-    source $HOME/tools/emsdk/emsdk_env.sh
-  fi
-}
 # }
 # bazel {
 if [[ -f "$HOME/.zsh/completion" ]]; then
@@ -147,10 +106,9 @@ alias luck="/usr/games/fortune | /usr/games/cowsay"
 # }
 # hadoop {
 export PATH="$PATH:/opt/hadoop-2.8.0/bin:/opt/hadoop-2.8.0/lib/native/"
-#
 # }
 # sdkman {
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "/home/$USER/.sdkman/bin/sdkman-init.sh"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "/home/joseph/.sdkman/bin/sdkman-init.sh"
 # }
