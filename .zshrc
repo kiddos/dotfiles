@@ -1,5 +1,5 @@
 # oh my zsh settings {
-export ZSH=/home/joseph/.oh-my-zsh
+export ZSH=/home/$USER/.oh-my-zsh
 
 # Path to your oh-my-zsh installation
 ZSH_THEME="gianu"
@@ -46,7 +46,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker node go heroku virtualenv npm pip tmux rvm)
+plugins=(git docker node go heroku virtualenv ng npm pip tmux rvm)
 # }
 source $ZSH/oh-my-zsh.sh
 # custom path settings {
@@ -60,7 +60,7 @@ export LANG=en_US.UTF-8
 # editor
 export EDITOR='nvim'
 # CUDA
-export CUDA_HOME=/usr/local/cuda-8.0
+export CUDA_HOME=/usr/local/cuda
 export PATH="$PATH:$CUDA_HOME/bin"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/lib64:$CUDA_HOME/extras/CUPTI/lib64"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/nvidia-375"
@@ -93,6 +93,7 @@ fi
 # macro {
 alias :q=exit
 alias :Q=exit
+alias wifi_list="nmcli c"
 # }
 # }
 # bazel {

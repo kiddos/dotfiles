@@ -8,13 +8,13 @@
   "plugins": {
     "angular": {},
     "commonjs": {},
+    "complete_strings": {},
+    "doc_comment": {},
+    "es_modules": {},
     "modules": {},
     "node": {},
-    "node-express": {},
     "node_resolve": {},
     "requirejs": {},
-    "commonjs": {},
-    "modules": {},
     "webpack": {}
   }
 }
