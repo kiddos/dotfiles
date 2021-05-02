@@ -3,6 +3,7 @@ export ZSH=/home/$USER/.oh-my-zsh
 
 # Path to your oh-my-zsh installation
 ZSH_THEME="gianu"
+# ZSH_THEME="risto"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -25,7 +26,6 @@ DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
-
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
 
@@ -46,7 +46,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker node go heroku virtualenv ng npm pip tmux rvm)
+plugins=(git docker node golang heroku virtualenv ng npm pip tmux rvm)
 # }
 source $ZSH/oh-my-zsh.sh
 # custom path settings {
@@ -63,38 +63,28 @@ export EDITOR='nvim'
 export CUDA_HOME=/usr/local/cuda
 export PATH="$PATH:$CUDA_HOME/bin"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/lib64:$CUDA_HOME/extras/CUPTI/lib64"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/nvidia-375"
 # ruby
 export PATH="$PATH:$HOME/.rvm/bin:$HOME/.rvm/scripts"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-
-# lldb path
-export PYTHONPATH="$PYTHONPATH:/usr/lib/python2.7/dist-packages/lldb-3.8"
+export PATH="$PATH:$HOME/.local/bin"
+# }
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-
-# ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
+# npm {
+export NPM_PACAKGES="$HOME/.local/lib/node_modules"
+export PATH=$PATH:$NPM_PACAKGES/bin
+export MANPATH=":$NPM_PACKAGES/share/man"
 # }
-# ROS settings {
-# setup catkin workspace
-if [[ -f "/opt/ros/kinetic/setup.zsh" ]]; then
-  source /opt/ros/kinetic/setup.zsh
-fi
-if [[ -f "$HOME/catkin_$ROS_DISTRO/devel/setup.zsh" ]]; then
-  source ~/catkin_$ROS_DISTRO/devel/setup.zsh
-fi
-if [[ -f "$HOME/.ros.zsh" ]]; then
-  source ~/.ros.zsh
-fi
+
+# ssh {
+export SSH_KEY_PATH="~/.ssh/rsa_id"
 # }
 # macro {
 alias :q=exit
 alias :Q=exit
 alias wifi_list="nmcli c"
-# }
 # }
 # bazel {
 if [[ -f "$HOME/.zsh/completion" ]]; then
@@ -108,11 +98,36 @@ alias sl="ls"
 alias train="/usr/games/sl"
 alias luck="/usr/games/fortune | /usr/games/cowsay"
 # }
-# hadoop {
-export PATH="$PATH:/opt/hadoop-2.8.0/bin:/opt/hadoop-2.8.0/lib/native/"
-# }
 # sdkman {
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "/home/joseph/.sdkman/bin/sdkman-init.sh"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "/$HOME/.sdkman/bin/sdkman-init.sh"
 # }
+# android {
+export ANDROID_HOME=$HOME/android-sdk
+if [[ -d $ANDROID_HOME ]]; then
+  export PATH=$PATH:$ANDROID_HOME/emulator
+  export PATH=$PATH:$ANDROID_HOME/platform-tools
+fi
+# }
+
+# fzf {
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# }
+# R {
+export R_LIBS_USER=~/.local/R
+# }
+# go {
+export PATH=$PATH:$HOME/.local/go/bin
+# }
+# flutter {
+export PATH=$PATH:$HOME/.local/flutter/bin
+# }
+# rust {
+source "$HOME/.cargo/env"
+# }
+# depot_tools {
+export PATH=$PATH:$HOME/.local/depot_tools
+# }
+export PATH=$PATH:$HOME/.local/exercism/
+export PATH=$PATH:$HOME/.local/exercism/shell

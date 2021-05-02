@@ -115,10 +115,4 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/joseph/.sdkman"
-[[ -s "/home/joseph/.sdkman/bin/sdkman-init.sh" ]] && source "/home/joseph/.sdkman/bin/sdkman-init.sh"
+source "$HOME/.cargo/env"
