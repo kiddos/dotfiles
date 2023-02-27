@@ -45,7 +45,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker npm yarn pip tmux screen flutter rust adb ripgrep)
+plugins=(git git-lfs git-flow git-extras docker npm yarn nvm pip bazel tmux screen man flutter rust adb ripgrep)
 # }
 source $ZSH/oh-my-zsh.sh
 # custom path settings {
@@ -130,19 +130,30 @@ export PATH=$PATH:$HOME/.local/go/bin
 export PATH=$PATH:$HOME/flutter/bin
 # }
 # rust {
-source "$HOME/.cargo/env"
+if [[ -d $HOME/.cargo ]]; then
+  source "$HOME/.cargo/env"
+fi
 # }
 # depot_tools {
 export PATH=$PATH:$HOME/.local/depot_tools
 # }
-# exercism {
-export PATH=$PATH:$HOME/.local/exercism/
-export PATH=$PATH:$HOME/.local/exercism/shell
-# }
 # dasm {
 export PATH=$PATH:$HOME/.local/dasm
 # }
-
-alias luamake=/home/kiddos/.local/lsp/lua-language-server/3rd/luamake/luamake
-
-export GOOGLE_APPLICATION_CREDENTIALS="$HOME/.local/translate-nvim-26a86d528a71.json"
+# codeql {
+export PATH=$PATH:$HOME/codeql
+# }
+# keras {
+export KERAS_HOME=$HOME/keras
+# }
+# pytorch {
+export PYTORCH_HUB=$HOME/pytorch
+export PYTORCH_HOME=$HOME/pytorch
+export TORCH_HOME=$HOME/pytorch
+# }
+# huggingface {
+export HF_HOME=$HOME/huggingface
+# }
+# onnx {
+export ONNX_HOME=$HOME/onnx
+# }
