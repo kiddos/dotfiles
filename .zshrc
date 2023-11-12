@@ -1,8 +1,11 @@
 # oh my zsh settings {
 export ZSH=/home/$USER/.oh-my-zsh
 # Path to your oh-my-zsh installation
+# ZSH_THEME="philips"
 ZSH_THEME="gianu"
 # ZSH_THEME="risto"
+# ZSH_THEME="crunch"
+# ZSH_THEME="gentoo"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -45,9 +48,10 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-lfs git-flow git-extras docker npm yarn nvm pip bazel tmux screen man flutter rust adb ripgrep)
+plugins=(git git-lfs git-flow git-extras docker npm nvm yarn pip bazel tmux screen man flutter rust adb ripgrep)
 # }
 source $ZSH/oh-my-zsh.sh
+
 # custom path settings {
 # local path
 export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -65,18 +69,19 @@ export PATH="$PATH:$HOME/.local/bin"
 # export ARCHFLAGS="-arch x86_64"
 
 # CUDA {
-export CUDA_HOME=/usr/local/cuda
+export CUDA_HOME=/usr/local/cuda-11.7
+export CUDNN_HOME=/usr/local/cuda-11.7
 export PATH="$PATH:$CUDA_HOME/bin"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/lib64:$CUDA_HOME/extras/CUPTI/lib64"
 export TENSORRT="TensorRT-8.5.2.2"
-export LD_LIBRARY_PATH="/usr/local/$TENSORRT/lib"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/$TENSORRT/lib"
 export TF_FORCE_GPU_ALLOW_GROWTH=true
 export XLA_PYTHON_CLIENT_PREALLOCATE=false
 # }
 # npm {
-export NPM_PACAKGES="$HOME/.local/lib/node_modules"
-export PATH=$PATH:$NPM_PACAKGES/bin
-export MANPATH=":$NPM_PACKAGES/share/man"
+# export NPM_PACAKGES="$HOME/.local/lib/node_modules"
+# export PATH=$PATH:$NPM_PACAKGES/bin
+# export MANPATH=":$NPM_PACKAGES/share/man"
 # }
 # ssh {
 export SSH_KEY_PATH="~/.ssh/rsa_id"
@@ -128,6 +133,7 @@ export PATH=$PATH:$HOME/.local/go/bin
 # }
 # flutter {
 export PATH=$PATH:$HOME/flutter/bin
+export PATH=$PATH:$HOME/.pub-cache/bin
 # }
 # rust {
 if [[ -d $HOME/.cargo ]]; then
@@ -136,6 +142,10 @@ fi
 # }
 # depot_tools {
 export PATH=$PATH:$HOME/.local/depot_tools
+# }
+# exercism {
+export PATH=$PATH:$HOME/.local/exercism/
+export PATH=$PATH:$HOME/.local/exercism/shell
 # }
 # dasm {
 export PATH=$PATH:$HOME/.local/dasm
@@ -157,3 +167,39 @@ export HF_HOME=$HOME/huggingface
 # onnx {
 export ONNX_HOME=$HOME/onnx
 # }
+# platformio {
+function platformio {
+  source $HOME/.platformio/penv/bin/activate
+  export IDF_PATH=$HOME/projects/embedded/ESP8266_RTOS_SDK
+  export PATH=$PATH:$HOME/projects/embedded/xtensa-lx106-elf/bin
+}
+# }
+# tensorflow {
+# 0 = all messages are logged (default behavior)
+# 1 = INFO messages are not printed
+# 2 = INFO and WARNING messages are not printed
+# 3 = INFO, WARNING, and ERROR messages are not printed
+export TF_CPP_MIN_LOG_LEVEL=1
+# }
+# llvm {
+export PATH=$PATH:/usr/lib/llvm-10/bin
+# }
+# pyenv {
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+# }
+# nvm {
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# }
+# neovim {
+export NVIM_PYTHON_LOG_FILE=$HOME/.local/nvim.log
+# }
+
+
+if [[ -f $HOME/.api-keys.zsh ]]; then
+  source $HOME/.api-keys.zsh
+fi
