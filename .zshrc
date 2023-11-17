@@ -202,6 +202,9 @@ fi
 # neovim {
 export NVIM_PYTHON_LOG_FILE=$HOME/.local/nvim.log
 # }
+# alacritty completion {
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+# }
 
 
 if [[ -f $HOME/.api-keys.zsh ]]; then
