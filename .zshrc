@@ -63,6 +63,9 @@ export LANG=en_US.UTF-8
 # editor
 export EDITOR='nvim'
 export PATH="$PATH:$HOME/.local/bin"
+function cow() {
+  fortune | cowsay -f $(ls /usr/share/cowsay/cows | shuf -n 1 | cut -d. -f1)
+}
 # }
 
 # Compilation flags
