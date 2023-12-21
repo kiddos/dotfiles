@@ -88,6 +88,7 @@ export XLA_PYTHON_CLIENT_PREALLOCATE=false
 # }
 # ssh {
 export SSH_KEY_PATH="~/.ssh/rsa_id"
+alias ssh="TERM=term-256color ssh"
 # }
 # macro {
 alias :q=exit
