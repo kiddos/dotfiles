@@ -72,14 +72,13 @@ function cow() {
 # export ARCHFLAGS="-arch x86_64"
 
 # CUDA {
-export CUDA_HOME=/usr/local/cuda-11.7
-export CUDNN_HOME=/usr/local/cuda-11.7
+export CUDA_HOME=/usr/local/cuda-12.1
+export CUDNN_HOME=/usr/local/cuda-12.1
 export PATH="$PATH:$CUDA_HOME/bin"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/lib64:$CUDA_HOME/extras/CUPTI/lib64"
-export TENSORRT="TensorRT-8.5.2.2"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/$TENSORRT/lib"
 export TF_FORCE_GPU_ALLOW_GROWTH=true
-export XLA_PYTHON_CLIENT_PREALLOCATE=false
+# export XLA_PYTHON_CLIENT_PREALLOCATE=false
+# export XLA_FLAGS=--xla_gpu_cuda_data_dir=$CUDA_HOME
 # }
 # npm {
 # export NPM_PACAKGES="$HOME/.local/lib/node_modules"
@@ -88,7 +87,7 @@ export XLA_PYTHON_CLIENT_PREALLOCATE=false
 # }
 # ssh {
 export SSH_KEY_PATH="~/.ssh/rsa_id"
-alias ssh="TERM=term-256color ssh"
+alias ssh="TERM=xterm-256color ssh"
 # }
 # macro {
 alias :q=exit
@@ -214,3 +213,5 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 if [[ -f $HOME/.api-keys.zsh ]]; then
   source $HOME/.api-keys.zsh
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

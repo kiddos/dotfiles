@@ -58,7 +58,7 @@ window:
 scrolling:
   # maximum number of lines in the scrollback buffer. Specifying '0' will
   # disable scrolling.
-  # history: 0
+  history: 100000
 
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
@@ -69,7 +69,10 @@ font:
   # The normal (roman) font face to use.
   # Style can be specified to pick a specific face.
   normal:
-    family: ComicMono Nerd Font
+    # family: ComicMono Nerd Font
+    # family: ComicMono Nerd Font Mono
+    family: ComicShannsMono Nerd Font Mono
+    # family: ComicMono NF
     style: Regular
     # family: "Fira Code"
     # family: "Source Code Pro"
@@ -92,27 +95,29 @@ font:
   #   # style: "Medium Italic"
 
   # Point size of the font
-  size: 13.0
+  size: 14.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
   offset:
     x: 0
-    y: 0
+    y: -3
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increase the x offset to move the glyph to
   # the right, increase the y offset to move the glyph upward.
   glyph_offset:
     x: 0
-    y: 0
+    y: -3
+
+  builtin_box_drawing: false
 
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: false
 
 # Use custom cursor colors. If true, display the cursor in the cursor.foreground
 # and cursor.background colors, otherwise invert the colors of the cursor.
-custom_cursor_colors: true
+custom_cursor_colors: false
 
 # Colors
 colors:
