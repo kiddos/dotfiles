@@ -48,7 +48,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-lfs git-flow git-extras docker npm nvm yarn pip bazel tmux screen man flutter rust adb ripgrep)
+plugins=(git git-lfs git-flow git-extras docker npm nvm yarn pip bazel tmux screen man flutter rust)
 # }
 source $ZSH/oh-my-zsh.sh
 
@@ -75,10 +75,10 @@ function cow() {
 export CUDA_HOME=/usr/local/cuda-12.1
 export CUDNN_HOME=/usr/local/cuda-12.1
 export PATH="$PATH:$CUDA_HOME/bin"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/lib64:$CUDA_HOME/extras/CUPTI/lib64"
+# export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/lib64:$CUDA_HOME/extras/CUPTI/lib64"
 export TF_FORCE_GPU_ALLOW_GROWTH=true
-# export XLA_PYTHON_CLIENT_PREALLOCATE=false
-# export XLA_FLAGS=--xla_gpu_cuda_data_dir=$CUDA_HOME
+export XLA_PYTHON_CLIENT_PREALLOCATE=false
+export XLA_FLAGS=--xla_gpu_cuda_data_dir=$CUDA_HOME
 # }
 # npm {
 # export NPM_PACAKGES="$HOME/.local/lib/node_modules"
@@ -127,7 +127,7 @@ export PATH="$PATH:$HOME/.rvm/bin:$HOME/.rvm/scripts"
 export PATH="$PATH:$HOME/.rvm/bin"
 # }
 # java {
-export JAVA_HOME=$HOME/.local/jdk-11.0.2
+export JAVA_HOME=$HOME/.jdks/jdk-17.0.2
 export PATH=$PATH:$HOME/.local/apache-ant-1.10.10/bin
 export PATH=$PATH:$HOME/.local/apache-maven-3.8.6/bin
 # }
