@@ -14,3 +14,6 @@ ln -s `pwd`/.alacritty.toml $HOME/.alacritty.toml
 
 rm -rf $HOME/.profile
 ln -s `pwd`/.profile $HOME/.profile
+
+rm -rf $HOME/.local/bin/java_check.sh
+ln -s `pwd`/java_check.sh $HOME/.local/bin/java_check.sh
