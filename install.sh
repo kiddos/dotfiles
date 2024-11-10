@@ -17,3 +17,6 @@ ln -s `pwd`/.profile $HOME/.profile
 
 rm -rf $HOME/.local/bin/java_check.sh
 ln -s `pwd`/java_check.sh $HOME/.local/bin/java_check.sh
+
+rm -rf $HOME/.oh-my-zsh/custom/themes/kiddos.zsh-theme
+ln -s `pwd`/custom/themes/kiddos.zsh-theme $HOME/.oh-my-zsh/custom/themes/kiddos.zsh-theme

@@ -2,7 +2,7 @@
 export ZSH=/home/$USER/.oh-my-zsh
 # Path to your oh-my-zsh installation
 # ZSH_THEME="philips"
-ZSH_THEME="gianu"
+ZSH_THEME="kiddos"
 # ZSH_THEME="risto"
 # ZSH_THEME="crunch"
 # ZSH_THEME="gentoo"
@@ -48,7 +48,17 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-lfs git-flow git-extras docker npm nvm yarn pip bazel tmux screen man flutter rust)
+plugins=(
+  git git-lfs git-flow git-extras
+  docker
+  npm nvm yarn
+  pip
+  bazel buf
+  tmux screen man
+  flutter
+  rust
+  sdk ant gradle
+)
 # }
 source $ZSH/oh-my-zsh.sh
 
@@ -109,7 +119,6 @@ alias luck="/usr/games/fortune | /usr/games/cowsay"
 # }
 # sdkman {
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "/$HOME/.sdkman/bin/sdkman-init.sh"
 # }
 # android {
@@ -126,13 +135,8 @@ export PATH="$PATH:$HOME/.rvm/bin:$HOME/.rvm/scripts"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 # }
-# java {
-export JAVA_HOME=$HOME/.jdks/jdk-17.0.2
-export PATH=$PATH:$HOME/.local/apache-ant-1.10.10/bin
-export PATH=$PATH:$HOME/.local/apache-maven-3.8.6/bin
-# }
 # go {
-export PATH=$PATH:$HOME/.local/go/bin
+export PATH=$PATH:$HOME/go/bin
 # }
 # flutter {
 export PATH=$PATH:$HOME/flutter/bin
