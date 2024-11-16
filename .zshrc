@@ -99,11 +99,16 @@ export XLA_FLAGS=--xla_gpu_cuda_data_dir=$CUDA_HOME
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 alias ssh="TERM=xterm-256color ssh"
 # }
+# tmux {
+alias tmux="TERM=tmux-256color tmux -2"
+# }
+# kitty {
+export PATH=$PATH:$HOME/.local/kitty.app/bin
+# }
 # macro {
 alias :q=exit
 alias :Q=exit
 alias wifi_list="nmcli c"
-alias tmux=tmux -2
 # }
 # bazel {
 if [[ -f "$HOME/.zsh/completion" ]]; then
@@ -216,6 +221,10 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 if [[ -f $HOME/.api-keys.zsh ]]; then
   source $HOME/.api-keys.zsh
+fi
+
+if [[ -f $HOME/.env.zsh ]]; then
+  source $HOME/.env.zsh
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
