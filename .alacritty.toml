@@ -5,36 +5,33 @@ animation = "EaseOutExpo"
 color = "0xffffff"
 duration = 0
 
-[colors]
-draw_bold_text_with_bright_colors = false
+[colors.primary]
+background = "0x0d1117"
+foreground = "0xc9d1d9"
 
-[colors.bright]
-black = "0x282a35"
-blue = "0xcaa9fa"
-cyan = "0x9aedfe"
-green = "0x5af78e"
-magenta = "0xff92d0"
-red = "0xff6e67"
-white = "0xe6e6e6"
-yellow = "0xf4f99d"
+[colors.cursor]
+text = "0x0d1117"
+cursor = "0xc9d1d9"
 
 [colors.normal]
-black = "0x000000"
-blue = "0xcaa9fa"
-cyan = "0x8be9fd"
-green = "0x50fa7b"
-magenta = "0xff79c6"
-red = "0xff5555"
-white = "0xbfbfbf"
-yellow = "0xf1fa8c"
+black = "0x484f58"
+red = "0xff7b72"
+green = "0x58a6ff"
+yellow = "0xd29922"
+blue = "0x58a6ff"
+magenta = "0xbc8cff"
+cyan = "0x39c5cf"
+white = "0xb1bac4"
 
-[colors.primary]
-background = "0x282a36"
-foreground = "0xf8f8f2"
-
-[cursor]
-style = "Block"
-unfocused_hollow = true
+[colors.bright]
+black = "0x6e7681"
+red = "0xffa198"
+green = "0x79c0ff"
+yellow = "0xe3b341"
+blue = "0x79c0ff"
+magenta = "0xbc8cff"
+cyan = "0x39c5cf"
+white = "0xb1bac4"
 
 [debug]
 log_level = "OFF"
@@ -47,7 +44,7 @@ TERM = "alacritty"
 
 [font]
 # builtin_box_drawing = false
-size = 13.0
+size = 12.6
 
 [font.glyph_offset]
 x = 0
