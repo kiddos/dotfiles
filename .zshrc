@@ -64,7 +64,8 @@ source $ZSH/oh-my-zsh.sh
 
 # custom path settings {
 # local path
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
+export PATH=/usr/local/bin:$PATH
 # manual path
 export MANPATH="/usr/local/man:$MANPATH"
 # language
@@ -72,7 +73,6 @@ export LANG=en_US.UTF-8
 
 # editor
 export EDITOR='nvim'
-export PATH="$PATH:$HOME/.local/bin"
 function cow() {
   fortune | cowsay -f $(ls /usr/share/cowsay/cows | shuf -n 1 | cut -d. -f1)
 }
