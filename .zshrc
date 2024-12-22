@@ -100,7 +100,8 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 alias ssh="TERM=xterm-256color ssh"
 # }
 # tmux {
-alias tmux="TERM=tmux-256color tmux -2"
+# alias tmux="TERM=tmux-256color tmux -2"
+# alias tmux="tmux -2"
 # }
 # kitty {
 export PATH=$PATH:$HOME/.local/kitty.app/bin
@@ -108,7 +109,6 @@ export PATH=$PATH:$HOME/.local/kitty.app/bin
 # macro {
 alias :q=exit
 alias :Q=exit
-alias wifi_list="nmcli c"
 # }
 # bazel {
 if [[ -f "$HOME/.zsh/completion" ]]; then
@@ -150,6 +150,7 @@ export PATH=$PATH:$HOME/.pub-cache/bin
 # rust {
 if [[ -d $HOME/.cargo ]]; then
   source "$HOME/.cargo/env"
+  alias ls=lsd
 fi
 # }
 # depot_tools {
@@ -217,8 +218,7 @@ export NVIM_PYTHON_LOG_FILE=$HOME/.local/nvim.log
 # alacritty completion {
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 # }
-
-
+# extra setting {
 if [[ -f $HOME/.api-keys.zsh ]]; then
   source $HOME/.api-keys.zsh
 fi
@@ -228,3 +228,7 @@ if [[ -f $HOME/.env.zsh ]]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# }
+# aider {
+alias ai="pyenv activate aider; OLLAMA_API_BASE=http://127.0.0.1:11434 aider --model ollama_chat/llama3.2"
+# }
