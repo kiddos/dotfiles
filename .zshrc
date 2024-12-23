@@ -48,19 +48,26 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+zstyle ':omz:plugins:nvm' lazy yes
 plugins=(
   git git-lfs git-flow git-extras
-  docker
-  npm nvm yarn
+  rsync
+  fzf
+  docker docker-compose
+  nvm
+  npm yarn
+  pyenv
   pip
   bazel buf
   tmux screen man
   flutter
   rust
-  sdk ant gradle
+  sdk ant gradle mvn
+  zoxide
 )
 # }
 source $ZSH/oh-my-zsh.sh
+zmodload zsh/zprof
 
 # custom path settings {
 # local path
@@ -77,10 +84,6 @@ function cow() {
   fortune | cowsay -f $(ls /usr/share/cowsay/cows | shuf -n 1 | cut -d. -f1)
 }
 # }
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
 # CUDA {
 export CUDA_HOME=/usr/local/cuda-12.1
 export CUDNN_HOME=/usr/local/cuda-12.1
@@ -109,13 +112,6 @@ export PATH=$PATH:$HOME/.local/kitty.app/bin
 # macro {
 alias :q=exit
 alias :Q=exit
-# }
-# bazel {
-if [[ -f "$HOME/.zsh/completion" ]]; then
-  fpath[1,0]=~/.zsh/completion/
-  zstyle ":completion:*" use-cache on
-  zstyle ":completion:*" cache-path ~/.zsh/cache
-fi
 # }
 # fun {
 alias sl="ls"
@@ -153,19 +149,6 @@ if [[ -d $HOME/.cargo ]]; then
   alias ls=lsd
 fi
 # }
-# depot_tools {
-export PATH=$PATH:$HOME/.local/depot_tools
-# }
-# exercism {
-export PATH=$PATH:$HOME/.local/exercism/
-export PATH=$PATH:$HOME/.local/exercism/shell
-# }
-# dasm {
-export PATH=$PATH:$HOME/.local/dasm
-# }
-# codeql {
-export PATH=$PATH:$HOME/codeql
-# }
 # keras {
 export KERAS_HOME=$HOME/keras
 # }
@@ -194,11 +177,8 @@ function platformio {
 # 3 = INFO, WARNING, and ERROR messages are not printed
 export TF_CPP_MIN_LOG_LEVEL=1
 # }
-# llvm {
-export PATH=$PATH:/usr/lib/llvm-10/bin
-# }
 # pyenv {
-export PYENV_ROOT="$HOME/.pyenv"
+# export PYENV_ROOT="$HOME/.pyenv"
 if [[ -d $PYENV_ROOT ]]; then
   command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
@@ -206,17 +186,14 @@ if [[ -d $PYENV_ROOT ]]; then
 fi
 # }
 # nvm {
-export NVM_DIR="$HOME/.nvm"
-if [[ -d $NVM_DIR ]]; then
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-fi
+# export NVM_DIR="$HOME/.nvm"
+# if [[ -d $NVM_DIR ]]; then
+#   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# fi
 # }
 # neovim {
 export NVIM_PYTHON_LOG_FILE=$HOME/.local/nvim.log
-# }
-# alacritty completion {
-fpath+=${ZDOTDIR:-~}/.zsh_functions
 # }
 # extra setting {
 if [[ -f $HOME/.api-keys.zsh ]]; then
