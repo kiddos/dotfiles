@@ -56,7 +56,6 @@ plugins=(
   docker docker-compose
   nvm
   npm yarn
-  pyenv
   pip
   bazel buf
   tmux screen man
@@ -178,7 +177,7 @@ function platformio {
 export TF_CPP_MIN_LOG_LEVEL=1
 # }
 # pyenv {
-# export PYENV_ROOT="$HOME/.pyenv"
+export PYENV_ROOT="$HOME/.pyenv"
 if [[ -d $PYENV_ROOT ]]; then
   command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
@@ -196,8 +195,8 @@ fi
 export NVIM_PYTHON_LOG_FILE=$HOME/.local/nvim.log
 # }
 # extra setting {
-if [[ -f $HOME/.api-keys.zsh ]]; then
-  source $HOME/.api-keys.zsh
+if [[ -f $HOME/.env ]]; then
+  source $HOME/.env
 fi
 
 if [[ -f $HOME/.env.zsh ]]; then
