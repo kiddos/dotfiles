@@ -48,13 +48,13 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-zstyle ':omz:plugins:nvm' lazy yes
+# zstyle ':omz:plugins:nvm' lazy yes
 plugins=(
   git git-lfs git-flow git-extras
   rsync
   fzf
   docker docker-compose
-  nvm
+  # nvm
   npm yarn
   pip
   bazel buf
@@ -84,13 +84,13 @@ function cow() {
 }
 # }
 # CUDA {
-export CUDA_HOME=/usr/local/cuda-12.1
-export CUDNN_HOME=/usr/local/cuda-12.1
+# export CUDA_HOME=/usr/local/cuda-12.1
+# export CUDNN_HOME=/usr/local/cuda-12.1
 export PATH="$PATH:$CUDA_HOME/bin"
 # export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/lib64:$CUDA_HOME/extras/CUPTI/lib64"
-export TF_FORCE_GPU_ALLOW_GROWTH=true
-export XLA_PYTHON_CLIENT_PREALLOCATE=false
-export XLA_FLAGS=--xla_gpu_cuda_data_dir=$CUDA_HOME
+# export TF_FORCE_GPU_ALLOW_GROWTH=true
+# export XLA_PYTHON_CLIENT_PREALLOCATE=false
+# export XLA_FLAGS=--xla_gpu_cuda_data_dir=$CUDA_HOME
 # }
 # npm {
 # export NPM_PACAKGES="$HOME/.local/lib/node_modules"
@@ -185,11 +185,11 @@ if [[ -d $PYENV_ROOT ]]; then
 fi
 # }
 # nvm {
-# export NVM_DIR="$HOME/.nvm"
-# if [[ -d $NVM_DIR ]]; then
-#   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-# fi
+export NVM_DIR="$HOME/.nvm"
+if [[ -d $NVM_DIR ]]; then
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
 # }
 # neovim {
 export NVIM_PYTHON_LOG_FILE=$HOME/.local/nvim.log
@@ -207,4 +207,8 @@ fi
 # }
 # aider {
 alias ai="pyenv activate aider; OLLAMA_API_BASE=http://127.0.0.1:11434 aider --model ollama_chat/llama3.2"
+# }
+# pico-sdk {
+export PICO_SDK_PATH=$HOME/projects/pico-sdk
+export PICO_EXTRAS_PATH=$HOME/projects/pico-extras
 # }
