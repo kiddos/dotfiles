@@ -212,3 +212,7 @@ alias ai="pyenv activate aider; OLLAMA_API_BASE=http://127.0.0.1:11434 aider --m
 export PICO_SDK_PATH=$HOME/projects/pico-sdk
 export PICO_EXTRAS_PATH=$HOME/projects/pico-extras
 # }
+# cpp-compiler {
+export CXX=clang++
+export CC=clang
+# }
