@@ -55,7 +55,7 @@ plugins=(
   fzf
   docker docker-compose
   # nvm
-  npm yarn
+  # npm yarn
   pip
   bazel buf
   tmux screen man
@@ -69,9 +69,6 @@ source $ZSH/oh-my-zsh.sh
 zmodload zsh/zprof
 
 # custom path settings {
-# local path
-export PATH=$HOME/.local/bin:$PATH
-export PATH=/usr/local/bin:$PATH
 # manual path
 export MANPATH="/usr/local/man:$MANPATH"
 # language
@@ -86,27 +83,15 @@ function cow() {
 # CUDA {
 # export CUDA_HOME=/usr/local/cuda-12.1
 # export CUDNN_HOME=/usr/local/cuda-12.1
-export PATH="$PATH:$CUDA_HOME/bin"
+# export PATH="$PATH:$CUDA_HOME/bin"
 # export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$CUDA_HOME/lib64:$CUDA_HOME/extras/CUPTI/lib64"
 # export TF_FORCE_GPU_ALLOW_GROWTH=true
 # export XLA_PYTHON_CLIENT_PREALLOCATE=false
 # export XLA_FLAGS=--xla_gpu_cuda_data_dir=$CUDA_HOME
 # }
-# npm {
-# export NPM_PACAKGES="$HOME/.local/lib/node_modules"
-# export PATH=$PATH:$NPM_PACAKGES/bin
-# export MANPATH=":$NPM_PACKAGES/share/man"
-# }
 # ssh {
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 alias ssh="TERM=xterm-256color ssh"
-# }
-# tmux {
-# alias tmux="TERM=tmux-256color tmux -2"
-# alias tmux="tmux -2"
-# }
-# kitty {
-export PATH=$PATH:$HOME/.local/kitty.app/bin
 # }
 # macro {
 alias :q=exit
@@ -118,7 +103,6 @@ alias train="/usr/games/sl"
 alias luck="/usr/games/fortune | /usr/games/cowsay"
 # }
 # sdkman {
-# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "/$HOME/.sdkman/bin/sdkman-init.sh"
 # }
 # android {
@@ -132,8 +116,6 @@ fi
 # }
 # ruby {
 export PATH="$PATH:$HOME/.rvm/bin:$HOME/.rvm/scripts"
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 # }
 # go {
 export PATH=$PATH:$HOME/go/bin
@@ -184,15 +166,18 @@ if [[ -d $PYENV_ROOT ]]; then
   eval "$(pyenv virtualenv-init -)"
 fi
 # }
-# nvm {
-export NVM_DIR="$HOME/.nvm"
-if [[ -d $NVM_DIR ]]; then
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# fnm {
+FNM_PATH="$HOME/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$PATH:$HOME/.local/share/fnm"
+  eval "`fnm env`"
 fi
 # }
 # neovim {
 export NVIM_PYTHON_LOG_FILE=$HOME/.local/nvim.log
+# }
+# fzf {
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # }
 # extra setting {
 if [[ -f $HOME/.env ]]; then
@@ -202,11 +187,14 @@ fi
 if [[ -f $HOME/.env.zsh ]]; then
   source $HOME/.env.zsh
 fi
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # }
 # aider {
-alias ai="pyenv activate aider; OLLAMA_API_BASE=http://127.0.0.1:11434 aider --model ollama_chat/llama3.2"
+export AIDER_EDITOR=nvim
+function ai() {
+  pyenv activate aider
+  pyenv exec aider --env-file $HOME/.aider.env --message "$1"
+  pyenv deactivate aider
+}
 # }
 # pico-sdk {
 export PICO_SDK_PATH=$HOME/projects/pico-sdk
