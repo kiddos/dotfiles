@@ -54,6 +54,8 @@ plugins=(
   rsync
   fzf
   docker docker-compose
+  kubectl
+  minikube
   # nvm
   # npm yarn
   pip
@@ -63,6 +65,10 @@ plugins=(
   rust
   sdk ant gradle mvn
   zoxide
+  zsh-syntax-highlighting
+  fast-syntax-highlighting
+  # zsh-autosuggestions
+  # zsh-autocomplete
 )
 # }
 source $ZSH/oh-my-zsh.sh
@@ -157,6 +163,7 @@ function platformio {
 # 2 = INFO and WARNING messages are not printed
 # 3 = INFO, WARNING, and ERROR messages are not printed
 export TF_CPP_MIN_LOG_LEVEL=1
+export TF_FORCE_GPU_ALLOW_GROWTH=true
 # }
 # pyenv {
 export PYENV_ROOT="$HOME/.pyenv"
@@ -203,4 +210,7 @@ export PICO_EXTRAS_PATH=$HOME/projects/pico-extras
 # cpp-compiler {
 export CXX=clang++
 export CC=clang
+# }
+# kubernetes {
+alias kubectl="minikube kubectl --"
 # }
