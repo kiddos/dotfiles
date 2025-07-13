@@ -195,14 +195,6 @@ if [[ -f $HOME/.env.zsh ]]; then
   source $HOME/.env.zsh
 fi
 # }
-# aider {
-export AIDER_EDITOR=nvim
-function ai() {
-  pyenv activate aider
-  pyenv exec aider --env-file $HOME/.aider.env --message "$1"
-  pyenv deactivate aider
-}
-# }
 # pico-sdk {
 export PICO_SDK_PATH=$HOME/projects/pico-sdk
 export PICO_EXTRAS_PATH=$HOME/projects/pico-extras
