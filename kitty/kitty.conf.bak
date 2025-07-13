@@ -5,8 +5,7 @@
 #: kitty has very powerful font management. You can configure
 #: individual font faces and even specify special fonts for particular
 #: characters.
-
-font_family ComicCode Nerd Font SemiBold
+# font_family      family='ComicCode Nerd Font' postscript_name=ComicCodeNF-SemiBold
 # bold_font        auto
 # italic_font      auto
 # bold_italic_font auto
@@ -506,6 +505,7 @@ cursor_shape block
 #: contents of the system clipboard.
 
 # paste_actions quote-urls-at-prompt,confirm
+paste_actions filter
 
 #: A comma separated list of actions to take when pasting text into
 #: the terminal. The supported paste actions are:
@@ -1218,6 +1218,7 @@ visual_bell_duration 0.0
 #: The foreground and background colors.
 
 # background_opacity 1.0
+# background_opacity 0.69
 
 #: The opacity of the background. A number between zero and one, where
 #: one is opaque and zero is fully transparent. This will only work if
@@ -1414,7 +1415,7 @@ visual_bell_duration 0.0
 #: interactive mode and reads its startup rc files. Environment
 #: variables are expanded in this setting.
 
-# editor .
+editor nvim
 
 #: The terminal based text editor (such as vim or nano) to use when
 #: editing the kitty config file or similar tasks.
@@ -2117,6 +2118,14 @@ visual_bell_duration 0.0
 
 # map kitty_mod+enter new_window
 # map cmd+enter       new_window
+# map shift+right launch --location=vsplit
+# map shift+left launch --location=vsplit
+# map shift+up launch --location=hsplit
+# map shift+down launch --location=hsplit
+# map ctrl+left resize_window narrower
+# map ctrl+right resize_window wider
+# map ctrl+up resize_window taller
+# map ctrl+down resize_window shorter
 
 #::  You can open a new kitty window running an arbitrary program, for
 #::  example::
@@ -2301,6 +2310,16 @@ visual_bell_duration 0.0
 
 #:     map ctrl+alt+1 goto_tab 1
 #:     map ctrl+alt+2 goto_tab 2
+# map alt+1 goto_tab 1
+# map alt+2 goto_tab 2
+# map alt+3 goto_tab 3
+# map alt+4 goto_tab 4
+# map alt+5 goto_tab 5 
+# map alt+6 goto_tab 6
+# map alt+7 goto_tab 7
+# map alt+8 goto_tab 8
+# map alt+9 goto_tab 9
+# map alt+0 goto_tab 10
 
 #: Just as with new_window above, you can also pass the name of
 #: arbitrary commands to run when using new_tab and new_tab_with_cwd.
@@ -2642,6 +2661,18 @@ visual_bell_duration 0.0
 
 
 # BEGIN_KITTY_THEME
-# GitHub Dark Dimmed
+# Tomorrow Night
 include current-theme.conf
 # END_KITTY_THEME
+
+
+# BEGIN_KITTY_FONTS
+# font_family      family='ComicCode Nerd Font' postscript_name=ComicCodeNF-SemiBold
+# bold_font        auto
+# italic_font      auto
+# bold_italic_font auto
+font_family      family='ComicCode Nerd Font'
+bold_font        ComicCodeNF-SemiBold
+italic_font      auto
+bold_italic_font auto
+# END_KITTY_FONTS
