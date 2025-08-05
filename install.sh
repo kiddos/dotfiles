@@ -25,6 +25,6 @@ ln -s `pwd`/custom/themes/kiddos.zsh-theme $HOME/.oh-my-zsh/custom/themes/kiddos
 rm -rf $HOME/.config/kitty
 ln -s `pwd`/kitty $HOME/.config/kitty
 
-# aider
-rm -rf $HOME/.aider.env
-ln -s `pwd`/.aider.env $HOME/.aider.env
+# fish
+rm -rf $HOME/.config/fish
+ln -s `pwd`/fish $HOME/.config/fish
