@@ -6,7 +6,7 @@ set -U fish_greeting
 
 # environment variable {
 # editor
-set -g EDITOR nvim
+set -x EDITOR nvim
 # }
 # ssh {
 set -x SSH_KEY_PATH "~/.ssh/rsa_id"
