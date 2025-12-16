@@ -16,6 +16,7 @@ alias ssh="TERM=xterm-256color /usr/bin/ssh"
 alias :q=exit
 alias :Q=exit
 alias kubectl="minikube kubectl --"
+alias bcmake="cmake -B build .; make -C build -j8"
 # }
 # typo {
 alias sl="ls"
