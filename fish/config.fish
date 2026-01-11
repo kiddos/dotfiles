@@ -5,6 +5,8 @@ end
 set -U fish_greeting
 
 # environment variable {
+# local path
+set -gx PATH $PATH $HOME/.local/bin
 # editor
 set -x EDITOR nvim
 # }
