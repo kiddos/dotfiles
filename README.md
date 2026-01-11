@@ -1,8 +1,21 @@
 Kiddos' Dotfiles
 ================
 
-## Quick Download
+## install
 
-  ```shell
-  wget https://raw.githubusercontent.com/kiddos/dotfiles/master/download.zsh -O download.zsh; chmod +x download.zsh; ./download.zsh; rm download.zsh
-  ```
+```sh
+./install.sh
+```
+
+## rust tools
+
+```sh
+cargo install lsd
+cargo install bat
+cargo install du-dust
+cargo install ripgrep
+cargo install --force yazi-build
+cargo install trippy
+cargo install pmc
+cargo install sd
+```
