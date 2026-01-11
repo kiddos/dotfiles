@@ -18,4 +18,7 @@ cargo install --force yazi-build
 cargo install trippy
 cargo install pmc
 cargo install sd
+cargo install serie
+cargo install rustscan
+cargo install netscanner
 ```
