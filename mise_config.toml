@@ -1,13 +1,27 @@
 [tools]
+bazel = "latest"
 cmake = "3.31.10"
 flutter = "3.27.4-stable"
 fzf = "0.67.0"
 go = "1.25.5"
 java = "openjdk-21.0.2"
 kotlin = "latest"
+lua-language-server = "latest"
+minikube = "latest"
 node = "20.19.6"
-protoc = "33.2"
+proto = "latest"
 python = "3.12.12"
 rust = "latest"
+tmux = "latest"
 uv = "latest"
+yt-dlp = "latest"
 zig = "latest"
+
+[plugins]
+proto = "https://github.com/kiddos/mise-proto"
+
+[env]
+_.file = ["~/.env"]
+EDITOR = "nvim"
+CXX = "clang++"
+CC = "clang"
