@@ -21,4 +21,5 @@ cargo install sd
 cargo install serie
 cargo install rustscan
 cargo install netscanner
+cargo install gitlogue
 ```
