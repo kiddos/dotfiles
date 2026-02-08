@@ -1,0 +1,10 @@
+% ffmpeg, fish, cleanup
+
+# Delete 'ffmpeg' history
+history delete --prefix --case-sensitive "ffmpeg"
+
+# Delete 'yt-dlp' history
+history delete --prefix --case-sensitive "yt-dlp"
+
+# Delete commands starting with a specific term from fish history (interactive)
+history delete --prefix --case-sensitive "<term>"

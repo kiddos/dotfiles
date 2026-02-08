@@ -40,6 +40,7 @@ zig = "latest"
 "npm:corepack" = "latest"
 "npm:typescript" = "latest"
 "npm:pm2" = "latest"
+"cargo:navi" = "latest"
 
 [plugins]
 proto = "https://github.com/kiddos/mise-proto"

@@ -15,4 +15,7 @@ if test -d $HOME/.cargo
   if command -q du
     alias du=dust
   end
+  if command -q navi
+    navi widget fish | source
+  end
 end
