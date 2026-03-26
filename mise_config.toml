@@ -51,6 +51,7 @@ zig = "latest"
 "npm:pm2" = "latest"
 "cargo:navi" = "latest"
 maven = "latest"
+deno = "latest"
 
 [plugins]
 proto = "https://github.com/kiddos/mise-proto"
