@@ -52,6 +52,8 @@ zig = "latest"
 "cargo:navi" = "latest"
 maven = "latest"
 deno = "latest"
+gitleaks = "latest"
+cheat = "latest"
 
 [plugins]
 proto = "https://github.com/kiddos/mise-proto"
