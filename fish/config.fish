@@ -18,3 +18,4 @@ alias kubectl="minikube kubectl --"
 alias bcmake="cmake -B build .; make -C build -j8"
 # }
 set -x MENUCONFIG_STYLE monochrome
+set -g fish_emoji_width 1
