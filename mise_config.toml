@@ -9,7 +9,7 @@ fi
 [tools]
 bazel = "latest"
 cmake = "3.31.10"
-flutter = "3.38.5-stable"
+flutter = "3.47.7-stable"
 fzf = "latest"
 go = "1.25.5"
 gradle = "9.0"
@@ -17,9 +17,8 @@ java = "{% if get_env(name='WSL_DISTRO_NAME', default='') != '' %}corretto-8.472
 kotlin = "latest"
 lua-language-server = "latest"
 minikube = "latest"
-node = "20.19.6"
+node = "22.23.3"
 python = "3.12.12"
-rust = "latest"
 tmux = "latest"
 uv = "latest"
 "cargo:https://github.com/kiddos/basecode-lsp" = "latest"
@@ -46,10 +45,12 @@ uv = "latest"
 "npm:typescript" = "latest"
 "npm:pm2" = "latest"
 "npm:opencode-ai" = "latest"
+"npm:rea-agents" = "latest"
 maven = "latest"
 deno = "latest"
 gitleaks = "latest"
 cheat = "latest"
+gh = "latest"
 
 [env]
 _.file = ["~/.env"]
