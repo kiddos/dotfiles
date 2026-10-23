@@ -30,3 +30,7 @@ ln -s "$(pwd)/mise_config.toml" "$HOME/.config/mise/config.toml"
 rm -rf "$HOME/.local/share/navi"
 ln -s "$(pwd)/navi" "$HOME/.local/share/navi"
 
+if [ -d "$HOME/.gemini" ]; then
+  rm -rf "$HOME/.gemini/AGENTS.md"
+  ln -s "$(pwd)/AGENTS.md" "$HOME/.gemini/AGENTS.md"
+fi
